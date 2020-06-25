@@ -1,0 +1,17 @@
+all: simulator_Q1 simulator_Q2
+
+simulator_Q1: simulator.o maxHeap1.o Patient.o
+	g++ -std=c++11 simulator.o maxHeap1.o Patient.o -o simulator_Q1
+simulator.o: simulator.cpp
+	g++ -std=c++11 -Wall -c simulator.cpp
+Patient.o: Patient.h Patient.cpp
+	g++ -std=c++11 -Wall -c Patient.cpp
+maxHeap1.o: maxHeap1.h maxHeap1.cpp
+	g++ -std=c++11 -Wall -c maxHeap1.cpp
+simulator_Q2: simulator.o maxHeap2.o Patient.o
+	g++ -std=c++11 simulator.o maxHeap2.o Patient.o -o simulator_Q2
+maxHeap2.o: maxHeap2.h maxHeap2.cpp
+	g++ -std=c++11 -Wall -c maxHeap2.cpp
+
+clean:
+	rm *.o simulator_Q1 simulator_Q2
